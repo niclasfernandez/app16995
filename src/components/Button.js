@@ -1,16 +1,8 @@
-const Button = ({label, color, padding}) => {
-    const style = { 
-      color, 
-      padding 
-    }
-   
+const Button = ({func}) => {
+  console.log(func)
     return (
-      <button style={style}>{label}</button>
+      <button onClick={() => console.log('click')}>Incrementar</button>
     )
-  }
-
-  export const logger = () => {
-      return console.log('soy logger')
   }
 
   export default Button
