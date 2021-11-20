@@ -1,7 +1,6 @@
-const Button = ({func}) => {
-  console.log(func)
+const Button = ({func, label}) => {
     return (
-      <button onClick={() => console.log('click')}>Incrementar</button>
+      <button onClick={() => func()}>{label}</button>
     )
   }
 

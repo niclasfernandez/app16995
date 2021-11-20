@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import './App.css';
+import Button from './components/Button'
 
 class App extends Component {
   constructor (props) {
@@ -33,6 +34,7 @@ class App extends Component {
         <img src={"./images/imagen.png"} alt="react img"/>
         <button onClick={() => decrement()}>Decrementar</button>
         <button onClick={() => reset()}>Resetear</button>
+        <Button func={reset} label={'Reset'}/>
         <button onClick={() => increment()}>Incrementar</button>
       </div>
     );
