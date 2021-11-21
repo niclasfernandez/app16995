@@ -8,34 +8,34 @@ class App extends Component {
     this.state = {count : 0}
   }
 
+  increment = () => {
+    this.setState ({
+      count: this.state.count + 1
+    })
+  }
+
+  decrement = () =>{
+    this.setState ({
+      count: this.state.count - 1
+    })
+  }
+
+  reset = () => {
+    this.setState ({
+      count: 0
+    })
+  }
+
   render() {
-    const increment = () =>{
-      this.setState ({
-        count: this.state.count + 1
-      })
-    }
-
-    const decrement = () => {
-      this.setState ({
-        count: this.state.count - 1
-      })
-    }
-
-    const reset = () => {
-      this.setState ({
-        count: 0
-      })
-    }
-
     return (
       <div className="App">
         <h1>Hola Coderhouse</h1>
         <h1>{this.state.count}</h1>
         <img src={"./images/imagen.png"} alt="react img"/>
-        <button onClick={() => decrement()}>Decrementar</button>
-        <button onClick={() => reset()}>Resetear</button>
-        <Button func={reset} label={'Reset'}/>
-        <button onClick={() => increment()}>Incrementar</button>
+        <button onClick={() => this.decrement()}>Decrementar</button>
+        <button onClick={() => this.reset()}>Resetear</button>
+        <Button func={this.reset} label={'Reset'}/>
+        <button onClick={() => this.increment()}>Incrementar</button>
       </div>
     );
   }
