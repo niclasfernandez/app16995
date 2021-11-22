@@ -1,0 +1,25 @@
+.NavBar {
+    display: flex;
+    background: transparent;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    background: wheat;
+  }
+  
+  .Categories {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .Option {
+    color: #8C30F5;
+    text-decoration: none;
+    border-radius: 25;
+    margin: 0 50px
+  }
+  
+  .NavLink {
+    color :rgb(255, 0, 0)
+  }

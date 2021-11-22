@@ -1,41 +1,17 @@
 import { Component } from 'react'
 import './App.css';
-import Button from './components/Button'
+import Navbar from './components/Navbar/Navbar'
+import Counter from './components/Counter/Counter'
+
 
 class App extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {count : 0}
-  }
-
-  increment = () => {
-    this.setState ({
-      count: this.state.count + 1
-    })
-  }
-
-  decrement = () =>{
-    this.setState ({
-      count: this.state.count - 1
-    })
-  }
-
-  reset = () => {
-    this.setState ({
-      count: 0
-    })
-  }
-
   render() {
     return (
       <div className="App">
+        <Navbar />
         <h1>Hola Coderhouse</h1>
-        <h1>{this.state.count}</h1>
-        <img src={"./images/imagen.png"} alt="react img"/>
-        <button onClick={() => this.decrement()}>Decrementar</button>
-        <button onClick={() => this.reset()}>Resetear</button>
-        <Button func={this.reset} label={'Reset'}/>
-        <button onClick={() => this.increment()}>Incrementar</button>
+        <img src={"./logo192.png"} alt="react img"/>
+        <Counter />
       </div>
     );
   }
