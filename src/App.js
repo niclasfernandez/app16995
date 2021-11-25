@@ -1,44 +1,63 @@
 import  { useState, useEffect } from 'react' 
 import './App.css';
 import Navbar from './components/Navbar/Navbar'
-import Counter from './components/Counter/Counter'
 
-const TestComponent = ({title}) => {
-  useEffect(() => {
-    console.log('El componente se monto')
-    
-    return (() => {
-      console.log('El componente se va a desmontar')
-    })
-  }, [title])
+function getItems(){
+  return new Promise((resolve, reject) =>{
+   const object = [
+     {
+       id:'1',
+       name:'Audífonos',
+       description:'Audífonos Havit',
+       stock:20
+     },
+     {
+       id:'2',
+       name:'Parlantes',
+       description:'Parlantes JBL',
+       stock:25
+     },
+     {
+       id:'3',
+       name:'Audífonos Gamer',
+       description:'Audífonos para tu PC',
+       stock:30
+     }
+   ]
+      setTimeout(() => resolve(object), 3000 )
 
-  console.log('Se va a montar')
+  })
+}
 
+const ItemList = ({items}) => {
+  console.log(items)
   return (
     <div>
-      <h3>Test Component</h3>
-      <p>{title}</p>
+      <ul>
+        {items.map(i => <li key={i.id}>{i.name}</li>)}
+      </ul>
     </div>
   )
 }
 
 
 const App = () => {
-  const [title, setTitle] = useState('Hola camada 16995')
-  const [show, setShow] = useState(true)
+  const [listProduct, setListProduct] = useState([])
 
+  useEffect(() => {
+    const list = getItems()
+
+    list.then(response => {
+      console.log(response)
+      setListProduct(response)
+    })
+  }, [])
+
+  console.log(listProduct)
     return (
       <div className="App">
         <Navbar />
-        <h1>{title}</h1>
-        <img src={"./logo192.png"} alt="react img"/>
-        <button onClick={() => setTitle('Cambiamos el titulo')}>Cambiar titulo</button>
-        <button onClick={() => setTitle('Hola camada 16995')}>Reset</button>
-        <Counter />
-        {
-          show && <TestComponent title={title} /> //Aca hay un renderizado condicional que vamos a revisar mas adelante.
-        }  
-        <button onClick={() => setShow(false)}>Desmontar</button>
+        <ItemList items={listProduct}/>
       </div>
     );
 }
